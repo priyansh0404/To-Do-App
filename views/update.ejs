@@ -8,6 +8,11 @@
 </head>
 <body>
     <%- include("navbar") %>
-    <h1>Update Task List</h1>
+    <h1 class="Add-heading">Update Task List</h1>
+    <form action="/update" method="post" class="container">
+        <input type="text" class="input" placeholder="Enter Title">
+        <textarea class="input" placeholder="Enter task description"></textarea>
+        <button class="add_newTask">Update Task</button>
+    </form>
 </body>
 </html>
