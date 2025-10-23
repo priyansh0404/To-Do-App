@@ -30,10 +30,11 @@ nav{
 .nav-links:hover{
     cursor: pointer;
     background-color: #315b85;
+    
 }
 
 /* Add form css */
-.add_body{
+body{
     background-image: url("https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2Fc%2F3%2Fb%2Fe%2F9%2Fe%2Fc3be9e6e8950054edbfb0369725453fd55362150.jpg&w=750&q=75");
     background-size: cover;
     background-position: center;
@@ -41,6 +42,7 @@ nav{
     height: 100vh;
 }
 .Add-heading{
+    color: white;
     margin: 20px 10px;
     text-align: center;
 }
@@ -101,7 +103,7 @@ textarea.input{
     color: #555353;
     margin-bottom: 8px;
 }
-.delete_btn{
+.delete_btn,.update_btn{
     margin-top: 10px;
     background-color: red;
     color: white;
@@ -112,4 +114,12 @@ textarea.input{
 .delete_btn:hover{
     cursor: pointer;
     background-color: rgb(212, 80, 80);
+    
+}
+.update_btn{
+    background-color: rgb(6, 118, 6);
+}
+.update_btn:hover{
+    background-color: rgb(9, 203, 9);
+    cursor: pointer;
 }

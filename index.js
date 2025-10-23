@@ -32,17 +32,6 @@ app.get("/add", (req, resp) => {
   resp.render("add");
 });
 
-app.get("/delete/:id",async(req,resp)=>{
-    const db = await connection();
-    const collection = db.collection(collectionName);
-    const result = await collection.deleteOne({_id:new ObjectId(req.params.id)});
-    if(result){
-        resp.redirect("/");
-    }
-    else{
-        resp.status(400).send("Some error occured");
-    }
-})
 app.get("/update", (req, resp) => {
   resp.render("update");
 });
@@ -62,8 +51,43 @@ app.post("/add", async (req, resp) => {
     resp.status(400).send("Title and description are required");
   }
 });
-app.post("/update", (req, resp) => {
-  resp.redirect("/");
-});
 
+app.get("/delete/:id",async(req,resp)=>{
+    const db = await connection();
+    const collection = db.collection(collectionName);
+    const result = await collection.deleteOne({_id:new ObjectId(req.params.id)});
+    if(result){
+        resp.redirect("/");
+    }
+    else{
+        resp.status(400).send("Some error occured");
+    }
+})
+
+app.get("/update/:id", async(req, resp) => {
+  const db = await connection();
+  const collection = db.collection(collectionName);
+  const result = await collection.findOne({_id:new ObjectId(req.params.id)});
+  if(result){
+    resp.render("update",{result});
+  }
+  else{
+    resp.status(400).send("Some error occured");
+  }
+});
+app.post("/update/:id", async(req, resp) => {
+  const db = await connection();
+  const collection = db.collection(collectionName);
+  const filter = {_id:new ObjectId(req.params.id)};
+  console.log(req.body);
+  const updateData = {$set:{title:req.body.title,description:req.body.description}};
+  const result  = await collection.updateOne(filter,updateData); 
+  if(result){
+    resp.redirect("/");
+  }
+  else{
+    resp.status(400).send("Some error occured");
+  }
+});
+ 
 app.listen(3000);

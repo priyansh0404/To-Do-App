@@ -9,9 +9,10 @@
 <body>
     <%- include("navbar") %>
     <h1 class="Add-heading">Update Task List</h1>
-    <form action="/update" method="post" class="container">
-        <input type="text" class="input" placeholder="Enter Title">
-        <textarea class="input" placeholder="Enter task description"></textarea>
+    <form action="/update/<%= result._id%>" method="post" class="container">
+        <input type="text" class="input" name = "title" placeholder="Enter Title" value = "<%= result.title%>">
+        <textarea class="input" placeholder="Enter task description" name="description"><%= result.description %></textarea>
+
         <button class="add_newTask">Update Task</button>
     </form>
 </body>

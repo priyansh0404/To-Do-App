@@ -15,8 +15,8 @@
                 <li class="task-item">
                     <div class="task-title"><%= result[i].title %></div>
                     <div class="task-description"><%= result[i].description%></div>
-                    <a href="/delete/<%= result[i]._id %>" class="delete_btn">Delete</a>
-                    
+                    <a href="/delete/<%= result[i]._id %>" class="delete_btn">Delete</a>                    
+                    <a href="/update/<%= result[i]._id %>" class="update_btn">Update</a>
                 </li>
             <%}%>
         </ul>
